@@ -1,6 +1,6 @@
 Title
 
-ALBLOG API REST - Especificacion de gestión de recursos de ALBLOG API
+API REST - Especificacion de gestión de recursos
 
 Users
 Posts
@@ -15,8 +15,6 @@ Todos
     URL
 
     /rest/v1/users
-
-    Methods: C.R.U.D
 
     <The request type>
 

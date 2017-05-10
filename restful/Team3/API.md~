@@ -23,7 +23,8 @@ Todos
     GET  	/rest/v1/users/all 			Devuelve un listado con todos los usuarios registrados
     GET 	/rest/v1/user/:Id			Devuelve los datos del usuario con Id = <Id> 
     GET 	/rest/v1/user/:userId/posts/:Id		Devuelve el post con Id = <Id> del usuario con UserId = <UserId>
-    GET 	/rest/v1/user/:userId/album/:Id		Devuelve el album con Id = <Id> del usuario con UserId = <UserId> 	
+    GET 	/rest/v1/user/:userId/album/:Id		Devuelve el album con Id = <Id> del usuario con UserId = <UserId> 
+	
     DELETE	/rest/v1/users/:Id			Elimina un usuario
     PUT		/rest/v1/users/all
 	

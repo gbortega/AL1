@@ -1,10 +1,10 @@
 API REST - Resource Management Specification
 
-Users
-
 URL
 
     /rest/v1/										Endpoint version 1.0
+
+Users
 
 API CALLS
 

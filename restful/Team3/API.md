@@ -1,63 +1,86 @@
-Title
-
-API REST - Especificacion de gestión de recursos
+API REST - Resource Management Specification
 
 Users
-Posts
-Comments
-Albums
-Photos
-Todos
 
+URL
 
-**** USERS *****
+    /rest/v1/										Endpoint version 1.0
 
-    URL
+API CALLS
 
-    /rest/v1/users
+    POST    /rest/v1/users/add/name=:name&username=:username&email=:email			Create a user
+    GET     /rest/v1/users?id=:id								Show a user 
+    PUT     /rest/v1/users?id=:id&name=:name&...						Update a user
+    DELETE  /rest/v1/users?id=:id								Delete a user
+    
+    
+DOCUMENTATION
 
-    <The request type>
+TITLE
+Create a user
 
-    GET  	/rest/v1/users/all 			Devuelve un listado con todos los usuarios registrados
-    GET 	/rest/v1/user/:Id			Devuelve los datos del usuario con Id = <Id> 
-    GET 	/rest/v1/user/:userId/posts/:Id		Devuelve el post con Id = <Id> del usuario con UserId = <UserId>
-    GET 	/rest/v1/user/:userId/album/:Id		Devuelve el album con Id = <Id> del usuario con UserId = <UserId> 	
-    DELETE	/rest/v1/users/:Id			Elimina un usuario
-    PUT		/rest/v1/users/all
+URL
+/rest/v1/users
+
+METHOD
+GET
+
+URL PARAMS
+
+REQUIRED
 	
+	name: 		[string 255],
+	username: 	[string 55],
+	email: 		[string 255]
 
-    Required:
+OPTIONAL
 
-    id=[integer]
+	phone:		[string 55],  	 
+	website:	[string 255]
 
-    Optional:
 
-    photo_id=[alphanumeric]
+DATA PARAMS
 
-    Data Params
+{u: {
+	id: 	  [integer],
+	name:     [string],
+	username: [string],
+	email:    [string],
+	address:
+	{	street: [string],
+        	suite: [string],
+        	city: [string],
+        	zipcode: [string]
+	}
+        	geo:
+		{
+            		lat: [double signed].,
+            		lng: [double signed]
+		{
+	phone:   [string],
+	website: [string],
+        company:
+	{
+	        name: 		[string],
+	        catchPhrase:	[string],	
+	        bs: 		[string]
+	}
+}
 
-    <If making a post request, what should the body payload look like? URL Params rules apply here too.>
+SUCCESS RESPONSE
 
-    Success Response:
+Example:
+	Code: 200
+	Content: { OK }
 
-    <What should the status code be on success and is there any returned data? This is useful when people need to to know what their callbacks should expect!>
-        Code: 200
-        Content: { id : 12 }
+ERROR RESPONSE
+ 	Code: 400
+	Content: { error : "" }
+	
+SIMPLE CALL
 
-    Error Response:
+$ curl 'http://endpoint/rest/v1/users/add/name=gabriel&username=gabo&email=gbortega@gmail.com'
 
-    <Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be liste d here. It might seem repetitive, but it helps prevent assumptions from being made where they should be.>
-        Code: 401 UNAUTHORIZED
-        Content: { error : "Log in" }
+NOTES
 
-    OR
-        Code: 422 UNPROCESSABLE ENTRY
-        Content: { error : "Email Invalid" }
-
-    Sample Call:
-
-    <Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable.>
-
-    Notes:
-
-    <This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself 
+<This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself 

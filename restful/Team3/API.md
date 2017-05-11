@@ -1,53 +1,86 @@
-Title
+API REST - Resource Management Specification
 
-< API REST - WS gestión de albumes y fotografias. Try to use verbs that match both request type (fetching vs modifying) and plurality (one vs multiple).>
+URL
 
-    URL
+    /rest/v1/										Endpoint version 1.0
 
-    <rest/v1/>
+Users
 
-    Method:
+API CALLS
 
-    <The request type>
+    POST    /rest/v1/users/add/name=:name&username=:username&email=:email			Create a user
+    GET     /rest/v1/users?id=:id								Show a user 
+    PUT     /rest/v1/users?id=:id&name=:name&...						Update a user
+    DELETE  /rest/v1/users?id=:id								Delete a user
+    
+    
+DOCUMENTATION
 
-    GET | POST | DELETE | PUT
+TITLE
+Create a user
 
-    URL Params
+URL
+/rest/v1/users
 
-    <If URL params exist, specify them in accordance with name mentioned in URL section. Separate into optional and required. Document data constraints.>
+METHOD
+GET
 
-    Required:
+URL PARAMS
 
-    id=[integer]
+REQUIRED
+	
+	name: 		[string 255],
+	username: 	[string 55],
+	email: 		[string 255]
 
-    Optional:
+OPTIONAL
 
-    photo_id=[alphanumeric]
+	phone:		[string 55],  	 
+	website:	[string 255]
 
-    Data Params
 
-    <If making a post request, what should the body payload look like? URL Params rules apply here too.>
+DATA PARAMS
 
-    Success Response:
+{u: {
+	id: 	  [integer],
+	name:     [string],
+	username: [string],
+	email:    [string],
+	address:
+	{	street: [string],
+        	suite: [string],
+        	city: [string],
+        	zipcode: [string]
+	}
+        	geo:
+		{
+            		lat: [double signed].,
+            		lng: [double signed]
+		{
+	phone:   [string],
+	website: [string],
+        company:
+	{
+	        name: 		[string],
+	        catchPhrase:	[string],	
+	        bs: 		[string]
+	}
+}
 
-    <What should the status code be on success and is there any returned data? This is useful when people need to to know what their callbacks should expect!>
-        Code: 200
-        Content: { id : 12 }
+SUCCESS RESPONSE
 
-    Error Response:
+Example:
+	Code: 200
+	Content: { OK }
 
-    <Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be liste d here. It might seem repetitive, but it helps prevent assumptions from being made where they should be.>
-        Code: 401 UNAUTHORIZED
-        Content: { error : "Log in" }
+ERROR RESPONSE
+ 	Code: 400
+	Content: { error : "Bad request" }
+	
+SIMPLE CALL
 
-    OR
-        Code: 422 UNPROCESSABLE ENTRY
-        Content: { error : "Email Invalid" }
+$ curl 'http://IP-SERVER:PORT/rest/v1/users/add/name=gabriel&username=gabo&email=gbortega@gmail.com'
 
-    Sample Call:
+NOTES
 
-    <Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable.>
-
-    Notes:
-
-    <This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself 
+<This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself 

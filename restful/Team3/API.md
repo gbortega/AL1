@@ -75,11 +75,11 @@ Example:
 
 ERROR RESPONSE
  	Code: 400
-	Content: { error : "" }
+	Content: { error : "Bad request" }
 	
 SIMPLE CALL
 
-$ curl 'http://endpoint/rest/v1/users/add/name=gabriel&username=gabo&email=gbortega@gmail.com'
+$ curl 'http://IP-SERVER:PORT/rest/v1/users/add/name=gabriel&username=gabo&email=gbortega@gmail.com'
 
 NOTES
 

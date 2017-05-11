@@ -1,4 +1,4 @@
-API REST - Resource Management Specification
+--API REST - Resource Management Specification
 Documentation
 Version: 1.0
 Resource: Users
